@@ -98,7 +98,8 @@ if POSIX:
 # Windows
 if WINDOWS:
     def get_winver():
-        maj, min = sys.getwindowsversion()[0:2]
+        # rp-tanium, JIRA PYTHON-133 - hack windows to force XP
+        maj, min = 5, 1  # was sys.getwindowsversion()[0:2]
         return '0x0%s' % ((maj * 100) + min)
 
     macros.extend([
